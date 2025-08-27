@@ -1,2 +1,2 @@
 # java-poo-faculdade
-Códigos fontes de projetos da faculdade de POO em Java 
+Códigos fontes de projetos da faculdade de POO em Java para estudar
