@@ -113,7 +113,7 @@ public class Data
 
     public Data getDiaSeguinte () // não altera o this
     {
-        // faça
+        
         byte  dia, mes;
         short ano;
         dia = this.dia;
