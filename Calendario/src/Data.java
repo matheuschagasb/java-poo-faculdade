@@ -110,6 +110,7 @@ public class Data
         }
     }
 
+    /*
     public Data getDiaSeguinte () // não altera o this
     {
         byte  dia, mes;
@@ -139,6 +140,18 @@ public class Data
         try{
             retorno = new Data(dia, mes, ano);
         }catch (Exception erro){}
+        return retorno;
+    }
+     */
+
+    public Data getDiaSeguinte() throws Exception
+    {
+        Data retorno=null;
+        try{
+            retorno = new Data(this.dia, this.mes, this.ano);
+        }catch (Exception erro)
+        {}
+        retorno.avanceUmDia();
         return retorno;
     }
 
