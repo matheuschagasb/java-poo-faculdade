@@ -13,6 +13,12 @@ public class Main
             Data d2=d1.getDiaSeguinte();
             System.out.println (d2.getDia()+"/"+d2.getMes()+"/"+d2.getAno()); // 14/8/2025
             System.out.println (d1.getDia()+"/"+d1.getMes()+"/"+d1.getAno()); // 13/8/2025
+
+            d1.retrocedaUmDia();
+            System.out.println (d1.getDia()+"/"+d1.getMes()+"/"+d1.getAno()); // 12/8/2025
+
+            System.out.print("Metodo toString: ");
+            System.out.println(d1.toString());
         }
         catch (Exception erro)
         {

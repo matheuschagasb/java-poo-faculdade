@@ -108,12 +108,10 @@ public class Data
         }else{
             this.dia++;
         }
-
     }
 
     public Data getDiaSeguinte () // não altera o this
     {
-        
         byte  dia, mes;
         short ano;
         dia = this.dia;
@@ -142,6 +140,30 @@ public class Data
             retorno = new Data(dia, mes, ano);
         }catch (Exception erro){}
         return retorno;
+    }
+
+    public void retrocedaUmDia() throws Exception
+    {
+        if (Data.isValida((byte)(this.dia-1), this.mes, this.ano))
+        {
+            this.dia--;
+        }
+        else if (Data.isValida((byte)31, (byte)(this.mes-1), this.ano))
+        {
+            this.dia=(byte)31;
+            this.mes--;
+        }
+        else if (Data.isValida((byte)30, (byte)(this.mes-1), this.ano))
+        {
+            this.dia=(byte)30;
+            this.mes--;
+        }
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.dia + "/" + this.mes + "/" + this.ano;
     }
 
 }
