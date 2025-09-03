@@ -51,6 +51,7 @@ public class Horario {
 
     public void adiante(byte qtdSegundos) throws Exception
     {
+        if (qtdSegundos <=0) throw new Exception("Quantidade inválida");
         byte novosSegundos = (byte) (this.segundo+qtdSegundos);
         if (novosSegundos > 59){
             this.minuto++;
