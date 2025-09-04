@@ -67,6 +67,11 @@ public class Horario {
     }
      */
 
+    @Override
+    public String toString(){
+
+        return this.hora + ":" + this.minuto + ":" + this.segundo;
+    }
 
 
 }
