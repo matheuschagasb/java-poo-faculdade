@@ -11,7 +11,8 @@ public class Horario {
 
     public void setHora (byte hora) throws Exception
     {
-        if (hora < 0 || hora > 25){
+        if (hora < 0 || hora > 25)
+        {
             throw new Exception("Hora inválida");
         }
         this.hora=hora;
@@ -19,7 +20,8 @@ public class Horario {
 
     public void setMinuto (byte minuto) throws Exception
     {
-        if (minuto < 0 || minuto > 59) {
+        if (minuto < 0 || minuto > 59)
+        {
             throw new Exception("Minuto inválido");
         }
         this.minuto=minuto;
@@ -27,51 +29,103 @@ public class Horario {
 
     public void setSegundo (byte segundo) throws Exception
     {
-        if (segundo < 0 || segundo > 59){
+        if (segundo < 0 || segundo > 59)
+        {
             throw new Exception("Segundo inválido");
         }
         this.segundo=segundo;
     }
 
-    public byte getHora()
+    public String getHora()
     {
-        return this.hora;
+        return (this.hora<10?"0":"")+this.hora;
     }
 
-    public byte getMinuto()
+    public String getMinuto()
     {
-        return this.minuto;
+        return (this.minuto<10?"0":"")+this.minuto;
     }
 
-    public byte getSegundo()
+    public String getSegundo()
     {
-        return this.segundo;
+        return (this.segundo<10?"0":"")+this.segundo;
     }
 
 
-    public void adiante(byte qtdSegundos) throws Exception
+    public void adiante(int qtdSegundos) throws Exception
     {
         if (qtdSegundos <=0) throw new Exception("Quantidade inválida");
-        byte novosSegundos = (byte) (this.segundo+qtdSegundos);
-        if (novosSegundos > 59){
-            this.minuto++;
-            novosSegundos=(byte)0;
-        }
-        this.segundo = novosSegundos;
+        int horario = this.hora*3600+
+                      this.minuto*60+
+                      this.segundo;
+
+        horario += qtdSegundos;
+
+        this.hora = (byte) (horario/3600);
+        horario = horario %3600;
+        this.minuto = (byte) (horario/60);
+        this.segundo = (byte) (horario%60);
     }
 
-    /*
-    public void retroceda (byte qtdSegundos) throws Exception
+    public void retroceda (int qtdSegundos) throws Exception
     {
-        segundo
+        if (qtdSegundos <=0) throw new Exception("Quantidade inválida");
+        int horario = this.hora*3600+
+                this.minuto*60+
+                this.segundo;
+
+        horario -= qtdSegundos;
+
+        this.hora = (byte) (horario/3600);
+        horario = horario %3600;
+        this.minuto = (byte) (horario/60);
+        this.segundo = (byte) (horario%60);
     }
-     */
+
+    public Horario getHorarioFuturo (int qtdSegundos) throws Exception // nao altera o this
+    {
+       Horario retorno = null;
+       try{
+           retorno = new Horario(this.hora, this.minuto, this.segundo);
+       }
+       catch (Exception erro)
+       {}
+       retorno.adiante(qtdSegundos);
+       return retorno;
+    }
+
+    public Horario getHorarioPassado (int qtdSegundos) throws Exception // nao altera o this
+    {
+       Horario retorno = null;
+       try{
+           retorno = new Horario(this.hora, this.minuto, this.segundo);
+       }
+       catch (Exception erro)
+       {}
+       retorno.retroceda(qtdSegundos);
+       return retorno;
+    }
 
     @Override
-    public String toString(){
+    public String toString()
+    {
 
-        return this.hora + ":" + this.minuto + ":" + this.segundo;
+        return (this.hora<10?"0":"")+this.hora+":"+
+                (this.minuto<10?"0":"")+this.minuto+":"+
+                (this.segundo<10?"0":"")+this.segundo;
     }
 
+    @Override
+    public boolean equals (Object obj)
+    {
+        if(obj==this) return true;
+        if(obj==null) return false;
+        if(obj.getClass()!=this.getClass()) return false;
+        Horario h = (Horario) obj;
+        if (h.hora != this.hora ||
+            h.minuto != this.minuto ||
+            h.segundo != this.segundo) return false;
+        return true;
+    }
 
 }
