@@ -55,31 +55,31 @@ public class Horario {
     public void adiante(int qtdSegundos) throws Exception
     {
         if (qtdSegundos <=0) throw new Exception("Quantidade inválida");
-        int horario = this.hora*3600+
+        int horarioSegundos = this.hora*3600+
                       this.minuto*60+
                       this.segundo;
 
-        horario += qtdSegundos;
+        horarioSegundos += qtdSegundos;
 
-        this.hora = (byte) (horario/3600);
-        horario = horario %3600;
-        this.minuto = (byte) (horario/60);
-        this.segundo = (byte) (horario%60);
+        this.hora = (byte) (horarioSegundos /3600);
+        horarioSegundos = horarioSegundos %3600;
+        this.minuto = (byte) (horarioSegundos /60);
+        this.segundo = (byte) (horarioSegundos %60);
     }
 
     public void retroceda (int qtdSegundos) throws Exception
     {
         if (qtdSegundos <=0) throw new Exception("Quantidade inválida");
-        int horario = this.hora*3600+
+        int horarioSegundos = this.hora*3600+
                 this.minuto*60+
                 this.segundo;
 
-        horario -= qtdSegundos;
+        horarioSegundos -= qtdSegundos;
 
-        this.hora = (byte) (horario/3600);
-        horario = horario %3600;
-        this.minuto = (byte) (horario/60);
-        this.segundo = (byte) (horario%60);
+        this.hora = (byte) (horarioSegundos /3600);
+        horarioSegundos = horarioSegundos %3600;
+        this.minuto = (byte) (horarioSegundos /60);
+        this.segundo = (byte) (horarioSegundos %60);
     }
 
     public Horario getHorarioFuturo (int qtdSegundos) throws Exception // nao altera o this
