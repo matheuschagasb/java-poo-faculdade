@@ -144,10 +144,27 @@ public class Data
     }
      */
 
+    public void avanceVariosDias(int qtd) throws Exception //altera o this
+    {
+        if(qtd <=0) throw new Exception("Quantidade inválida");
+        for(int i=0;i<qtd; i++)
+        {
+            this.avanceUmDia();
+        }
+    }
+
+    /*
+    public Data getVariosDiasAdiante(int qtd) throws Exception //não altera this
+    {
+
+    }
+     */
+
     public Data getDiaSeguinte() throws Exception
     {
         Data retorno=null;
-        try{
+        try
+        {
             retorno = new Data(this.dia, this.mes, this.ano);
         }catch (Exception erro)
         {}
@@ -173,10 +190,31 @@ public class Data
         }
     }
 
+    public void retrocedaVariosDias(int qtd) throws Exception
+    {
+        if(qtd<=0) throw new Exception("Quantidade inválida");
+
+        for (int i=0; i<qtd; i++)
+        {
+            this.retrocedaUmDia();
+        }
+    }
+
     @Override
     public String toString()
     {
         return this.dia + "/" + this.mes + "/" + this.ano;
+    }
+
+    @Override
+    public boolean equals (Object obj)
+    {
+        if (obj==this) return true;
+        if (obj==null) return false;
+        if (obj.getClass()!=this.getClass()) return false;
+        Data d = (Data)obj;
+        if (d.dia!=this.dia || d.mes!=this.mes || d.ano!=this.ano) return false;
+        return true;
     }
 
 }

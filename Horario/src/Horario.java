@@ -109,7 +109,6 @@ public class Horario {
     @Override
     public String toString()
     {
-
         return (this.hora<10?"0":"")+this.hora+":"+
                 (this.minuto<10?"0":"")+this.minuto+":"+
                 (this.segundo<10?"0":"")+this.segundo;

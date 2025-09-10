@@ -9,9 +9,11 @@ public class Main {
             System.out.println(h1.toString());
             System.out.println(h1.getHorarioFuturo(60));
             System.out.println(h1.toString());
-        }catch (Exception erro)
+        }
+        catch (Exception erro)
         {
             System.err.println(erro.getMessage());
         }
     }
+
 }
