@@ -1,4 +1,4 @@
-public class Data
+public class Data implements Cloneable
 {
     private byte  dia, mes;
     private short ano;
@@ -215,6 +215,20 @@ public class Data
         Data d = (Data)obj;
         if (d.dia!=this.dia || d.mes!=this.mes || d.ano!=this.ano) return false;
         return true;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = 1; //qlqr numero natural > 0
+
+        result = 31 * result + new Byte(this.dia).hashCode();
+        result = 31 * result + new Byte(this.mes).hashCode();
+        result = 31 * result + new Short(this.ano).hashCode();
+
+        if (result < 0) result =- result;
+
+        return result;
     }
 
 }
