@@ -231,4 +231,27 @@ public class Data implements Cloneable
         return result;
     }
 
+    public /*void*/ Data (Data modelo) throws Exception
+    {
+        if (modelo==null) throw new Exception("Modelo ausente");
+
+        this.dia=modelo.dia;
+        this.mes=modelo.mes;
+        this.ano=modelo.ano;
+    }
+
+    @Override
+    public Object clone ()
+    {
+        Data retorno=null;
+        try
+        {
+            retorno = new Data (this);
+        }
+        catch (Exception erro)
+        {} // so da erro se receber null e this nunca é null
+
+        return retorno;
+    }
+
 }
