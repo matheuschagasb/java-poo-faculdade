@@ -1,4 +1,4 @@
-public class Data implements Cloneable
+public class Data implements Cloneable, Comparable<Data>
 {
     private byte  dia, mes;
     private short ano;
@@ -267,8 +267,8 @@ public class Data implements Cloneable
         if (this.ano>data.ano) return 1;
         if (this.mes<data.mes) return -1;
         if (this.mes>data.mes) return 1;
-        if (this.ano<data.ano) return -1;
-        if (this.ano>data.ano) return 1;
+        if (this.dia<data.dia) return -1;
+        if (this.dia>data.dia) return 1;
         return 0;
     }
 
