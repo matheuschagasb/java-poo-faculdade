@@ -15,18 +15,30 @@ public class Main
             System.out.println (d1); // 13/8/2025
 
             Data d2=d1.getDiaSeguinte();
-            System.out.println();
+            System.out.print("Método getDiaSeguinte: ");
             System.out.println (d2); // 14/8/2025
             System.out.println (d1); // 13/8/2025
 
+            d1.setAno((short)2026);
+            System.out.print("Método setAno: ");
+            System.out.println(d1);
+
             d1.retrocedaUmDia();
+            System.out.print("Método retrocedaUmDia: ");
             System.out.println (d1); // 12/8/2025
 
             System.out.print("Metodo toString: ");
-            System.out.println(d1);
+            System.out.println(d1.toString());
+
+            System.out.print("Método equals: ");
+            System.out.println(d1.equals(d2));
 
             System.out.print("Metodo Hashcode: ");
             System.out.println(d1.hashCode());
+
+            System.out.print("Método compareTo: ");
+            System.out.println(d1.compareTo(d2));
+
         }
         catch (Exception erro)
         {

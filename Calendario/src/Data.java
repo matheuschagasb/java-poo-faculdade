@@ -153,12 +153,19 @@ public class Data implements Cloneable
         }
     }
 
-    /*
+
     public Data getVariosDiasAdiante(int qtd) throws Exception //não altera this
     {
-
+        Data retorno = null;
+        try
+        {
+            retorno = new Data(this.dia, this.mes, this.ano);
+        }catch (Exception erro)
+        {}
+        retorno.avanceVariosDias(qtd);
+        return retorno;
     }
-     */
+
 
     public Data getDiaSeguinte() throws Exception
     {
@@ -252,6 +259,17 @@ public class Data implements Cloneable
         {} // so da erro se receber null e this nunca é null
 
         return retorno;
+    }
+
+    public int compareTo (Data data)
+    {
+        if (this.ano<data.ano) return -1;
+        if (this.ano>data.ano) return 1;
+        if (this.mes<data.mes) return -1;
+        if (this.mes>data.mes) return 1;
+        if (this.ano<data.ano) return -1;
+        if (this.ano>data.ano) return 1;
+        return 0;
     }
 
 }
