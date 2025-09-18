@@ -1,4 +1,5 @@
-public class Angulo {
+public class Angulo
+{
 
     private float valorEmGraus;
 
@@ -10,17 +11,18 @@ public class Angulo {
     public void setValorEmGraus (float valorEmGraus) throws Exception
     {
         if (valorEmGraus < 0 || valorEmGraus > 360) throw new Exception("Valor inválido");
-
         this.valorEmGraus = valorEmGraus;
     }
 
-    public void setValorEmGrados (float valorEmGrados)
+    public void setValorEmGrados (float valorEmGrados) throws Exception
     {
+        if (valorEmGrados < 0 || valorEmGrados > 400) throw new Exception("Valor inválido");
         this.valorEmGraus = valorEmGrados * (float)0.9;
     }
 
-    public void setValorEmRadianos (float valorEmRadianos)
+    public void setValorEmRadianos (float valorEmRadianos) throws Exception
     {
+        if (valorEmRadianos < 0 || valorEmRadianos > 2 * Math.PI) throw new Exception("Valor inválido");
         this.valorEmGraus = valorEmRadianos * (180 / (float)Math.PI);
     }
 
@@ -63,7 +65,7 @@ public class Angulo {
 
         result = 31 * result + new Float(this.valorEmGraus).hashCode();
 
-        if (result < 0) result =- result;
+        if (result < 0) result = -result;
         return result;
     }
 
