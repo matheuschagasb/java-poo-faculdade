@@ -2,7 +2,7 @@ public class Data implements Cloneable, Comparable<Data>
 {
     private byte  dia, mes;
     private short ano;
-
+    
     public static boolean isBissexto (short ano)
     {
         // Calendario Juliano
@@ -233,7 +233,7 @@ public class Data implements Cloneable, Comparable<Data>
         result = 31 * result + new Byte(this.mes).hashCode();
         result = 31 * result + new Short(this.ano).hashCode();
 
-        if (result < 0) result =- result;
+        if (result < 0) result = -result;
 
         return result;
     }
@@ -261,6 +261,7 @@ public class Data implements Cloneable, Comparable<Data>
         return retorno;
     }
 
+    @Override
     public int compareTo (Data data)
     {
         if (this.ano<data.ano) return -1;
