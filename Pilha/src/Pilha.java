@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Pilha <X> implements Cloneable
 {
-    private X[] elemento;
+    private X[] elemento;   // vetor onde os itens serão guardados
     private int ultimo;     // (-1 quando vazio)
 
     public Pilha()
