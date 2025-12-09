@@ -52,6 +52,45 @@ public class Pilha <X> implements Cloneable
         return this.ultimo + 1;
     }
 
+    // Verifica se um item existe na pilha
+    public boolean contem(X x)
+    {
+        if (x == null) return false;
+    
+        for (int i = 0; i <= this.ultimo; i++)
+        {
+            if (x.equals(this.elemento[i]))
+                return true;
+        }
+    
+        return false;
+    }
+    
+    // Encontra em qual índice está o elemento
+    public int indiceDe(X x)
+    {
+        if (x == null) return -1;
+    
+        for (int i = 0; i <= this.ultimo; i++)
+        {
+            if (x.equals(this.elemento[i]))
+                return i;
+        }
+    
+        return -1;
+    }
+
+    public void alterarItem(int indice, X novo) throws Exception
+    {
+        if (novo == null)
+            throw new Exception("Novo item ausente");
+        if (indice < 0 || indice > this.ultimo)
+            throw new Exception("Índice inválido");
+    
+        // deep copy do item
+        this.elemento[indice] = (X) novo.clone();
+    }
+
     @Override
     public String toString() {
         return (ultimo == -1)
