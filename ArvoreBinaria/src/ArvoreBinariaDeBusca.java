@@ -164,14 +164,36 @@ public class ArvoreBinariaDeBusca <X extends Comparable<X>>
         return this.isBalanceada(this.raiz);
     }
 
-    /*
+    private void emOrdem(No r, java.util.ArrayList<X> lista)
+    {
+        if (r == null) return;
+        emOrdem(r.getEsq(), lista);
+        lista.add(r.getInfo());
+        emOrdem(r.getDir(), lista);
+    }
+
+    private No construirBalanceada(java.util.ArrayList<X> lista, int inicio, int fim)
+    {
+        if (inicio > fim) return null;
+
+        int meio = (inicio + fim) / 2;
+        No novo = new No(lista.get(meio));
+
+        novo.setEsq(construirBalanceada(lista, inicio, meio - 1));
+        novo.setDir(construirBalanceada(lista, meio + 1, fim));
+
+        return novo;
+    }
+
     public void balanceieSe()
     {
+        if (this.raiz == null) return;
 
+        java.util.ArrayList<X> lista = new java.util.ArrayList<>();
+        emOrdem(this.raiz, lista);
+
+        this.raiz = construirBalanceada(lista, 0, lista.size() - 1);
     }
-    */
-    // faça um metodo para balancear a arvore.
-    // balanceadas sao as arvores CUJOS NÓS (todos eles) têm a diferença da
-    // quantidade de nós de suas subárvores esquerda e direita entre -1 e 1.
 
-} // fim da classe ArvoreBinariaDeBusca
+
+}
